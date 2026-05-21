@@ -1,0 +1,5 @@
+{
+  "seed": 20260521,
+  "description": "Synthetic quantum-physics-style datasets for the 30 lab graph templates.",
+  "output": "data\\lab_graph_examples.npz"
+}
