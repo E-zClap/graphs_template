@@ -16,18 +16,31 @@ from matplotlib import font_manager
 FONT_TEXT = "Libertinus Serif"
 FONT_MATH = "Libertinus Math"
 
+BRAND = {
+    "midnight": "#0A0F1C",
+    "navy": "#11233F",
+    "ice": "#A9B8D0",
+    "white": "#F4F6F8",
+    "orange": "#F47A20",
+    "amber": "#FFB347",
+    "rust": "#B85724",
+    "slate": "#6E7785",
+    "light_slate": "#D7DCE3",
+}
+
 COLORS = {
-    "ink": "#111318",
-    "graphite": "#5F646A",
-    "reference": "#A7A9AC",
-    "mist": "#D9DEE3",
-    "exp": "#0B4F71",
-    "exp_light": "#8CC7D8",
-    "theory": "#C48A00",
-    "simulation": "#0A7A75",
-    "error": "#A33A2B",
+    "exp": "#F47A20",
+    "exp_light": "#FFB347",
+    "theory": "#244C84",
+    "simulation": "#5E8FCB",
+    "error": "#B85724",
+    "reference": "#8A9099",
+    "text": "#111318",
+    "grid": "#DCE1E8",
+    "ice": "#A9B8D0",
+    "amber": "#FFB347",
     "black": "#111318",
-    "grid": "#D9DEE3",
+    "ink": "#111318",
 }
 
 COLORMAPS = {
@@ -41,31 +54,33 @@ COLORMAPS = {
 
 QUANTUM_COLORMAP_COLORS = {
     "quantum_seq": [
-        "#071820",
-        "#0B4F71",
-        "#0A7A75",
-        "#E2B84A",
+        "#08111F",
+        "#15325B",
+        "#244C84",
+        "#F47A20",
+        "#FFD08A",
     ],
     "quantum_div": [
-        "#A33A2B",
-        "#F3EFE6",
-        "#0B4F71",
+        "#B85724",
+        "#F5EFE8",
+        "#244C84",
     ],
     "quantum_phase": [
-        "#0B4F71",
-        "#0A7A75",
-        "#C48A00",
-        "#A33A2B",
-        "#0B4F71",
+        "#244C84",
+        "#5E8FCB",
+        "#F47A20",
+        "#FFD08A",
+        "#244C84",
     ],
 }
 
 LAB_GRAPH_IDENTITY = {
-    "name": "Quantum Ink",
+    "name": "Midnight Quantum",
     "fonts": {
         "text": FONT_TEXT,
         "math": FONT_MATH,
     },
+    "brand": BRAND,
     "colors": COLORS,
     "colormaps": {
         "positive": QUANTUM_COLORMAP_COLORS["quantum_seq"],
@@ -74,11 +89,11 @@ LAB_GRAPH_IDENTITY = {
     },
     "rules": {
         "normal_panel_color_budget": "1-2 accent colors maximum",
-        "experiment": "deep blue markers or line",
-        "theory": "amber line, no markers",
-        "simulation": "teal dashed line",
-        "error": "oxide red only for bad/unwanted physics",
-        "references": "grey, thin, visually secondary",
+        "experiment": "orange open markers or orange line",
+        "theory": "deep cool blue line, no markers",
+        "simulation": "light blue dashed line",
+        "error": "rust only for bad/unwanted physics",
+        "references": "slate grey, thin, visually secondary",
         "many_categories": "grey line styles, not many colors",
         "heatmaps": "use lab-native colormaps only",
     },
@@ -108,11 +123,11 @@ def register_project_fonts() -> None:
 
 
 def cmap(role_or_name: str):
-    """Return a lab-native Quantum Ink colormap by role or explicit name."""
+    """Return a lab-native Midnight Quantum colormap by role or explicit name."""
 
     name = COLORMAPS.get(role_or_name, role_or_name)
     if name not in QUANTUM_COLORMAP_COLORS:
-        raise ValueError(f"Unknown Quantum Ink colormap role: {role_or_name!r}")
+        raise ValueError(f"Unknown Midnight Quantum colormap role: {role_or_name!r}")
     return LinearSegmentedColormap.from_list(name, QUANTUM_COLORMAP_COLORS[name])
 
 
@@ -140,12 +155,12 @@ def apply_style() -> None:
             "mathtext.bf": f"{font_family}:bold",
             "mathtext.sf": font_family,
             "mathtext.tt": "DejaVu Sans Mono",
-            "axes.edgecolor": COLORS["ink"],
-            "axes.labelcolor": COLORS["ink"],
+            "axes.edgecolor": COLORS["text"],
+            "axes.labelcolor": COLORS["text"],
             "axes.linewidth": LINEWIDTH["axis"],
-            "xtick.color": COLORS["ink"],
-            "ytick.color": COLORS["ink"],
-            "text.color": COLORS["ink"],
+            "xtick.color": COLORS["text"],
+            "ytick.color": COLORS["text"],
+            "text.color": COLORS["text"],
             "figure.dpi": 120,
             "savefig.dpi": 300,
             "savefig.bbox": "tight",

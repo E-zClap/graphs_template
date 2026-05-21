@@ -1,12 +1,15 @@
-# Quantum Ink v1
+# Midnight Quantum v1
 
-This is the lab graph identity, not just a safe plotting palette. The goal is a
-recognizable visual language: precise, minimal, Journal-compatible, and clearly
-connected across papers.
+This is the lab graph identity derived from the website language: midnight blue,
+quantum orange, ice blue, and clean white-space precision. For papers, the
+figures stay on a white background, but the website identity becomes the accent
+system.
 
-The graph taxonomy remains useful, but the house style is **Quantum Ink v1**:
-deep ink-blue experimental data, warm amber theory, graphite references, dark
-teal simulation only when needed, and oxide red only for unwanted physics.
+The rule is simple:
+
+> Use the website's midnight-blue / quantum-orange language as a restrained
+> accent system on white publication figures, with orange as the experimental
+> signature and blue as the theoretical/simulation structure.
 
 ## How to Run
 
@@ -20,60 +23,57 @@ Outputs:
 - `data/lab_graph_examples.npz`: deterministic synthetic data.
 - `data/metadata.json`: data-generation metadata.
 - `figures/png/*.png`: one PNG per graph class.
-- `figures/quantum_ink_taxonomy_one_page.pdf`: compact 30-panel taxonomy sheet.
-- `figures/quantum_ink_templates_full_size.pdf`: one full-size template per page.
+- `figures/midnight_quantum_taxonomy_one_page.pdf`: compact 30-panel taxonomy sheet.
+- `figures/midnight_quantum_templates_full_size.pdf`: one full-size template per page.
 
 ## Identity Object
 
 ```python
 LAB_GRAPH_IDENTITY = {
-    "name": "Quantum Ink",
+    "name": "Midnight Quantum",
 
     "fonts": {
         "text": "Libertinus Serif",
         "math": "Libertinus Math",
     },
 
+    "brand": {
+        "midnight":    "#0A0F1C",
+        "navy":        "#11233F",
+        "ice":         "#A9B8D0",
+        "white":       "#F4F6F8",
+        "orange":      "#F47A20",
+        "amber":       "#FFB347",
+        "rust":        "#B85724",
+        "slate":       "#6E7785",
+        "light_slate": "#D7DCE3",
+    },
+
     "colors": {
-        "ink":        "#111318",
-        "graphite":   "#5F646A",
-        "reference":  "#A7A9AC",
-        "mist":       "#D9DEE3",
-        "exp":        "#0B4F71",
-        "exp_light":  "#8CC7D8",
-        "theory":     "#C48A00",
-        "simulation": "#0A7A75",
-        "error":      "#A33A2B",
+        "exp":        "#F47A20",
+        "exp_light":  "#FFB347",
+        "theory":     "#244C84",
+        "simulation": "#5E8FCB",
+        "error":      "#B85724",
+        "reference":  "#8A9099",
+        "text":       "#111318",
+        "grid":       "#DCE1E8",
+        "ice":        "#A9B8D0",
     },
 
     "colormaps": {
-        "positive": [
-            "#071820",
-            "#0B4F71",
-            "#0A7A75",
-            "#E2B84A",
-        ],
-        "signed": [
-            "#A33A2B",
-            "#F3EFE6",
-            "#0B4F71",
-        ],
-        "phase": [
-            "#0B4F71",
-            "#0A7A75",
-            "#C48A00",
-            "#A33A2B",
-            "#0B4F71",
-        ],
+        "positive": ["#08111F", "#15325B", "#244C84", "#F47A20", "#FFD08A"],
+        "signed":   ["#B85724", "#F5EFE8", "#244C84"],
+        "phase":    ["#244C84", "#5E8FCB", "#F47A20", "#FFD08A", "#244C84"],
     },
 
     "rules": {
-        "normal_panel_color_budget": "1-2 accent colors maximum",
-        "experiment": "deep blue markers or line",
-        "theory": "amber line, no markers",
-        "simulation": "teal dashed line",
-        "error": "oxide red only for bad/unwanted physics",
-        "references": "grey, thin, visually secondary",
+        "paper_background": "white",
+        "experiment": "orange open markers or orange line",
+        "theory": "deep cool blue line, no markers",
+        "simulation": "light blue dashed line",
+        "error": "rust only for bad/unwanted physics",
+        "references": "slate grey, thin, visually secondary",
         "many_categories": "grey line styles, not many colors",
         "heatmaps": "use lab-native colormaps only",
     },
@@ -82,48 +82,49 @@ LAB_GRAPH_IDENTITY = {
 
 ## Visual Personality
 
-Quantum Ink figures should feel:
+Midnight Quantum figures should feel:
 
 - precise
-- high-end
+- high-tech
 - quantum
+- premium
 - minimal
-- slightly dark-toned
 - not rainbow
 - not generic Matplotlib
-- not generic APS
+- not a literal dark website screenshot
 
-Most panels should visually reduce to:
+For papers, keep:
 
 ```text
-ink axes
-graphite references
-deep blue experiment
-warm amber theory
+white background
+black/ink text
+thin axes
+orange experiment
+deep blue theory
+light blue simulation
+slate grey references
+rust error only when meaningful
 ```
-
-Teal and oxide red are special-use colors. A normal figure should not use the
-whole palette.
 
 ## Semantic Colors
 
 | Role | Color | Rule |
 | --- | --- | --- |
-| Experimental data | `#0B4F71` | Main measured data. |
-| Secondary/control data | `#8CC7D8` | Only when needed. |
-| Theory / fit | `#C48A00` | Analytical prediction or fitted model. |
-| Simulation | `#0A7A75` | Only when simulation is explicitly present. |
-| Error / loss / leakage | `#A33A2B` | Reserved for bad or unwanted physics. |
-| Reference / inactive / guide | `#A7A9AC` | Never a main result. |
+| Experimental data | `#F47A20` | Main measured data and lab signature accent. |
+| Secondary experimental fill | `#FFB347` | Only for subtle fills or secondary experimental emphasis. |
+| Theory / fit | `#244C84` | Analytical prediction or fitted model. |
+| Simulation | `#5E8FCB` | Numerical result, usually dashed. |
+| Error / loss / leakage | `#B85724` | Reserved for bad or unwanted physics. |
+| Reference / inactive / guide | `#8A9099` | Never a main result. |
 | Text / axes | `#111318` | Always consistent. |
-| Light guides | `#D9DEE3` | Timing windows, grids, uncertainty edges. |
+| Light guides | `#DCE1E8` | Timing windows, grids, uncertainty edges. |
 
 Do not add purple, magenta, bright cyan, bright yellow, rainbow maps, or random
 categorical colors in ordinary figures.
 
 ## Experimental Data Grammar
 
-Experimental data should normally use open ink-blue circles:
+Experimental data should normally use open quantum-orange circles:
 
 ```python
 marker = "o"
@@ -133,7 +134,7 @@ markeredgecolor = LAB_COLORS["exp"]
 color = LAB_COLORS["exp"]
 ```
 
-Dense measured traces may use an ink-blue line. Error bars use the same ink-blue
+Dense measured traces may use an orange line. Error bars use the same orange
 stroke, thin lines, and small caps.
 
 ## Theory and Simulation Grammar
@@ -154,12 +155,12 @@ linewidth = 1.1
 linestyle = "--"
 ```
 
-References and extra curves should be graphite/reference grey, thin, and
-visually secondary. Extra curves do not get new colors.
+References and extra curves should be slate/reference grey, thin, and visually
+secondary. Extra curves do not get new colors.
 
-## Oxide Red Rule
+## Rust Rule
 
-Oxide red is sacred. Use it only for:
+Rust is reserved. Use it only for:
 
 - loss
 - heating
@@ -169,40 +170,59 @@ Oxide red is sacred. Use it only for:
 - failure mode
 - unwanted transition
 
-Never use oxide red for an ordinary dataset.
+Never use rust for an ordinary dataset.
 
 ## Lab-Native Colormaps
 
-Use only the Quantum Ink colormap family.
+Use only the Midnight Quantum colormap family.
 
 Positive scalar data:
 
 ```python
-QUANTUM_SEQ = ["#071820", "#0B4F71", "#0A7A75", "#E2B84A"]
+QUANTUM_SEQ = ["#08111F", "#15325B", "#244C84", "#F47A20", "#FFD08A"]
 ```
 
 Signed data:
 
 ```python
-QUANTUM_DIV = ["#A33A2B", "#F3EFE6", "#0B4F71"]
+QUANTUM_DIV = ["#B85724", "#F5EFE8", "#244C84"]
 ```
 
 Phase/cyclic data:
 
 ```python
-QUANTUM_PHASE = ["#0B4F71", "#0A7A75", "#C48A00", "#A33A2B", "#0B4F71"]
+QUANTUM_PHASE = ["#244C84", "#5E8FCB", "#F47A20", "#FFD08A", "#244C84"]
 ```
 
 Every continuous color encoding needs a colorbar with a label and units where
 applicable.
+
+## Paper Mode vs Talk/Web Mode
+
+Paper mode:
+
+- white background
+- restrained colors
+- no glow
+- no decorative shadows
+- brand expressed through accents only
+
+Talk/web mode:
+
+- dark background is allowed
+- subtle glow can be acceptable
+- orange and blue gradients can be stronger
+- panel backgrounds may reference the website
+
+The identity is shared, but the expression changes.
 
 ## Allowed Color Uses
 
 Color may mean only one of three things:
 
 1. Physical role: experiment, theory, simulation, error, reference.
-2. Continuous parameter: Quantum Ink colormap plus colorbar.
-3. Scalar field value: Quantum Ink heatmap colormap plus colorbar.
+2. Continuous parameter: Midnight Quantum colormap plus colorbar.
+3. Scalar field value: Midnight Quantum heatmap colormap plus colorbar.
 
 Anything else is decorative and should be removed.
 
@@ -246,8 +266,7 @@ templates.
 
 ## Use It For Your Own Graph
 
-For a new figure, start from the shared style module instead of redefining
-colors inside the plotting script.
+Start from the shared style module:
 
 ```python
 import matplotlib.pyplot as plt
@@ -258,9 +277,6 @@ apply_style()
 ```
 
 ### Data Plus Fit
-
-Use open ink-blue circles for measured data and an amber line for the fit or
-theory curve.
 
 ```python
 fig, ax = plt.subplots(figsize=(3.35, 2.45), constrained_layout=True)
@@ -291,8 +307,6 @@ fig.savefig("my_figure.png", dpi=300, bbox_inches="tight")
 
 ### Experiment, Theory, Simulation
 
-Use this grammar whenever all three are present:
-
 ```python
 ax.plot(
     x_exp,
@@ -307,13 +321,7 @@ ax.plot(x_theory, y_theory, color=COLORS["theory"], label="theory")
 ax.plot(x_sim, y_sim, color=COLORS["simulation"], linestyle="--", label="simulation")
 ```
 
-Do not introduce a new color for a fourth ordinary curve. Use grey line styles
-unless the new curve has a fixed semantic role.
-
-### Many Curves With A Continuous Parameter
-
-If color encodes a swept scalar parameter, use a Quantum Ink colormap and a
-colorbar.
+### Continuous Parameter Sweep
 
 ```python
 import matplotlib as mpl
@@ -334,8 +342,6 @@ phase sweeps, use `cmap("phase")`.
 
 ### Heatmaps
 
-Use a lab-native colormap based on the data type:
-
 ```python
 im = ax.imshow(
     z,
@@ -352,29 +358,12 @@ For signed data:
 
 ```python
 lim = abs(z).max()
-im = ax.imshow(
-    z,
-    origin="lower",
-    cmap=cmap("signed"),
-    vmin=-lim,
-    vmax=lim,
-)
+im = ax.imshow(z, origin="lower", cmap=cmap("signed"), vmin=-lim, vmax=lim)
 cb = fig.colorbar(im, ax=ax)
 cb.set_label("Residual")
 ```
 
-For phase:
-
-```python
-im = ax.imshow(phase, origin="lower", cmap=cmap("phase"), vmin=-3.14159, vmax=3.14159)
-cb = fig.colorbar(im, ax=ax)
-cb.set_label("Phase")
-```
-
 ### Bars And Distributions
-
-State populations and measured discrete outcomes use blue bars. Theory should
-be an amber marker or outline, not a second decorative fill.
 
 ```python
 ax.bar(states, population, color=COLORS["exp"], label="exp.")
@@ -386,14 +375,12 @@ Distribution plots should stay restrained:
 ```python
 parts = ax.violinplot(groups, showmedians=True)
 for body in parts["bodies"]:
-    body.set_facecolor(COLORS["exp_light"])
-    body.set_edgecolor(COLORS["exp"])
+    body.set_facecolor(COLORS["ice"])
+    body.set_edgecolor(COLORS["simulation"])
     body.set_alpha(0.35)
 ```
 
 ### Figure Size
-
-Use journal-like sizes by default:
 
 ```python
 single_column = (3.35, 2.45)
@@ -406,13 +393,15 @@ still readable at the final printed size.
 
 ## Hard Rules
 
-1. Most panels use only one or two accent colors.
-2. Deep blue always means experimental data.
-3. Amber always means theory or fit.
-4. Dark teal means simulation only.
-5. Oxide red is reserved for loss, leakage, heating, error, or failure.
-6. Graphite/reference grey is for background, inactive curves, and guides.
-7. Continuous gradients always need a colorbar.
-8. Heatmaps always use the lab-native colormaps.
-9. Categorical rainbow plots are forbidden.
-10. Color is never decorative.
+1. White background for papers.
+2. Orange is the lab signature accent.
+3. Experiment is orange by default.
+4. Theory is deep blue.
+5. Simulation is light blue.
+6. Reference curves are grey.
+7. Error/loss is rust.
+8. Most plots use only two strong colors.
+9. Extra curves use line style, not new colors.
+10. Heatmaps use only lab-native colormaps.
+11. No random palette expansions.
+12. No dark-background paper figures unless truly necessary.

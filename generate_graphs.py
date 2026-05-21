@@ -1,4 +1,4 @@
-"""Generate Quantum Ink graph taxonomy examples.
+"""Generate Midnight Quantum graph taxonomy examples.
 
 Run:
     python scripts/generate_data.py
@@ -6,7 +6,7 @@ Run:
 
 Outputs:
     figures/png/*.png
-    figures/quantum_ink_taxonomy_one_page.pdf
+    figures/midnight_quantum_taxonomy_one_page.pdf
 """
 
 from __future__ import annotations
@@ -27,8 +27,8 @@ from lab_graph_style import COLORS, LINEWIDTH, MARKER_SIZE, apply_style, clean_a
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "lab_graph_examples.npz"
 PNG_DIR = ROOT / "figures" / "png"
-PDF_FILE = ROOT / "figures" / "quantum_ink_taxonomy_one_page.pdf"
-FULL_SIZE_PDF_FILE = ROOT / "figures" / "quantum_ink_templates_full_size.pdf"
+PDF_FILE = ROOT / "figures" / "midnight_quantum_taxonomy_one_page.pdf"
+FULL_SIZE_PDF_FILE = ROOT / "figures" / "midnight_quantum_templates_full_size.pdf"
 
 
 @dataclass(frozen=True)
@@ -396,7 +396,7 @@ def draw_violin_swarm(ax, d, compact=False):
     vals = [row for row in d["distribution_groups"]]
     parts = ax.violinplot(vals, showmedians=True, widths=0.72)
     for body in parts["bodies"]:
-        body.set_facecolor(COLORS["exp_light"])
+        body.set_facecolor(COLORS["ice"])
         body.set_alpha(0.35)
         body.set_edgecolor(COLORS["exp"])
         body.set_linewidth(0.6)
@@ -546,6 +546,8 @@ def save_one_page_pdf(data) -> Path:
     for stale_pdf in [
         ROOT / "figures" / "lab_graph_templates_one_page.pdf",
         ROOT / "figures" / "lab_graph_templates_full_size.pdf",
+        ROOT / "figures" / "quantum_ink_taxonomy_one_page.pdf",
+        ROOT / "figures" / "quantum_ink_templates_full_size.pdf",
     ]:
         if stale_pdf.exists():
             stale_pdf.unlink()
@@ -565,7 +567,7 @@ def save_one_page_pdf(data) -> Path:
         Line2D([0], [0], color=COLORS["reference"], linestyle="-", label="reference"),
     ]
     fig.legend(handles=handles, loc="upper center", ncol=6, frameon=False, bbox_to_anchor=(0.5, 1.012), fontsize=8)
-    fig.suptitle("Quantum Ink v1: Lab Graph Taxonomy", fontsize=14, y=1.028)
+    fig.suptitle("Midnight Quantum v1: Lab Graph Taxonomy", fontsize=14, y=1.028)
     fig.savefig(PDF_FILE)
     plt.close(fig)
     return PDF_FILE
